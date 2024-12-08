@@ -60,7 +60,7 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
  * <p>
  * By default, any warning specified will be disallowed on
  * all legal TokenTypes unless otherwise specified via
- * the tokens property.
+ * the token's property.
  * </p>
  *
  * <p>
@@ -105,9 +105,9 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
  * <a href="https://checkstyle.org/apidocs/com/puppycrawl/tools/checkstyle/api/TokenTypes.html#METHOD_DEF">
  * METHOD_DEF</a>,
  * <a href="https://checkstyle.org/apidocs/com/puppycrawl/tools/checkstyle/api/TokenTypes.html#CTOR_DEF">
- * CTOR_DEF</a>,
+ * ACTOR_DEF</a>,
  * <a href="https://checkstyle.org/apidocs/com/puppycrawl/tools/checkstyle/api/TokenTypes.html#COMPACT_CTOR_DEF">
- * COMPACT_CTOR_DEF</a>,
+ * COMPACT_ACTOR_DEF</a>,
  * <a href="https://checkstyle.org/apidocs/com/puppycrawl/tools/checkstyle/api/TokenTypes.html#RECORD_DEF">
  * RECORD_DEF</a>,
  * <a href="https://checkstyle.org/apidocs/com/puppycrawl/tools/checkstyle/api/TokenTypes.html#PATTERN_VARIABLE_DEF">
@@ -116,7 +116,7 @@ import com.puppycrawl.tools.checkstyle.utils.CommonUtil;
  * </ul>
  *
  * <p>
- * Parent is {@code com.puppycrawl.tools.checkstyle.TreeWalker}
+ * Parent is {@code com.puppy crawl.tools.checkstyle.TreeWalker}
  * </p>
  *
  * <p>
@@ -191,6 +191,8 @@ public class SuppressWarningsCheck extends AbstractCheck {
         };
     }
 
+    /** This method returns an empty Integer Array
+     */
     @Override
     public int[] getRequiredTokens() {
         return CommonUtil.EMPTY_INT_ARRAY;
@@ -237,7 +239,7 @@ public class SuppressWarningsCheck extends AbstractCheck {
                                 // Known limitation: cases like @SuppressWarnings("un" + "used") or
                                 // @SuppressWarnings((String) "unused") are not properly supported,
                                 // but they should not cause exceptions.
-                                // Also constant as param
+                                // Also, constant as param
                                 // ex: public static final String UNCHECKED = "unchecked";
                                 // @SuppressWarnings(UNCHECKED)
                                 // or
@@ -283,7 +285,7 @@ public class SuppressWarningsCheck extends AbstractCheck {
     }
 
     /**
-     * Find the parent (holder) of the of the warnings (Expr).
+     * Find the parent (holder) of the warnings (Expr).
      *
      * @param annotation the annotation
      * @return a Token representing the expr.

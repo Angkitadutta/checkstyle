@@ -55,7 +55,7 @@ import com.puppycrawl.tools.checkstyle.api.TokenTypes;
  * </ul>
  *
  * <p>
- * Parent is {@code com.puppycrawl.tools.checkstyle.TreeWalker}
+ * Parent is {@code com.puppy crawl.tools.checkstyle.TreeWalker}
  * </p>
  *
  * <p>
@@ -79,7 +79,7 @@ public class EmptyCatchBlockCheck extends AbstractCheck {
     public static final String MSG_KEY_CATCH_BLOCK_EMPTY = "catch.block.empty";
 
     /**
-     * A pattern to split on line ends.
+     * A pattern to split online ends.
      */
     private static final Pattern LINE_END_PATTERN = Pattern.compile("\\r?+\\n|\\r");
 
@@ -172,8 +172,8 @@ public class EmptyCatchBlockCheck extends AbstractCheck {
      * @return the first line of comment in catch block, "" if no comment was found.
      */
     private static String getCommentFirstLine(DetailAST catchAst) {
-        final DetailAST slistToken = catchAst.getLastChild();
-        final DetailAST firstElementInBlock = slistToken.getFirstChild();
+        final DetailAST listToken = catchAst.getLastChild();
+        final DetailAST firstElementInBlock = listToken.getFirstChild();
         String commentContent = "";
         if (firstElementInBlock.getType() == TokenTypes.SINGLE_LINE_COMMENT) {
             commentContent = firstElementInBlock.getFirstChild().getText();
@@ -216,8 +216,8 @@ public class EmptyCatchBlockCheck extends AbstractCheck {
      */
     private static boolean isEmptyCatchBlock(DetailAST catchAst) {
         boolean result = true;
-        final DetailAST slistToken = catchAst.findFirstToken(TokenTypes.SLIST);
-        DetailAST catchBlockStmt = slistToken.getFirstChild();
+        final DetailAST listToken = catchAst.findFirstToken(TokenTypes.SLIST);
+        DetailAST catchBlockStmt = listToken.getFirstChild();
         while (catchBlockStmt.getType() != TokenTypes.RCURLY) {
             if (catchBlockStmt.getType() != TokenTypes.SINGLE_LINE_COMMENT
                  && catchBlockStmt.getType() != TokenTypes.BLOCK_COMMENT_BEGIN) {
